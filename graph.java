@@ -7,8 +7,7 @@ public class Graph {
 
   public HashMap<Location, ArrayList<Road>> addLocation(Location locationName) {
     ArrayList<Road> futureListOfRoads = new ArrayList<>();
-    
-    graph.put(locationName.toString(), futureListOfRoads);
+    graph.put(locationName, futureListOfRoads);
     return graph;
   }
 
@@ -22,11 +21,13 @@ public class Graph {
     listOfRoads1 = graph.get(location1Name);
     listOfRoads2 = graph.get(location2Name);
     
-    Road newRoad = new Road(locationName1, locationName2, travelTime);
+    Road newRoad1 = new Road(locationName1, locationName2, travelTime);
+    Road newRoad2 = new Road(locationName2, locationName1, travelTime);
     
-    listOfRoads1.add(newRoad);
-    listOfRoads2.add(newRoad);
+    listOfRoads1.add(newRoad1);
+    listOfRoads2.add(newRoad2);
 
-    graph.put(,)
-  }
+    graph.put(locationName1, listOfRoads1);
+    graph.put(locationName2, listOfRoads2);
+  } // Note that this adds roads for both locations.
 }
