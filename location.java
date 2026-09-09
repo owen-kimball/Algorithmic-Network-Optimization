@@ -1,8 +1,8 @@
 public class Location {
-  String nameOfLocation;
+  private String nameOfLocation;
   
-  Location(String nameProvided) {
-    nameOfLocation = nameProvided;
+  Location(String nameOfLocation) {
+    this.nameOfLocation = nameOfLocation;
   }
 
   public String getLocationName() {
@@ -17,7 +17,7 @@ public class Location {
     String l1Name, l2Name;
     l1Name = l1.toString();
     l2Name = l2.toString();
-    if(l1Name.equals(l2Name)) {
+    if (l1Name.equals(l2Name)) {
       return true;
     } else {
       return false;
