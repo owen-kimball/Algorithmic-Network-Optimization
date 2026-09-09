@@ -35,5 +35,26 @@ public class Graph {
 
     graph.put(locationName1, listOfRoads1);
     graph.put(locationName2, listOfRoads2);
-  } // Note that this adds roads for both locations.
+  } // Note that this adds Roads for both Locations in their ArrayLists of Roads.
+
+  public HashSet<Location> getAllLocations() {
+    HashSet<Location> allLocations = new HashSet<>();
+    allLocations = graph.keySet();
+    return allLocations;
+  } // Returns all of the Locations in the Graph object.
+
+  public ArrayList<Road> getRoadsOfLocation(Location chosenLocation) {
+    ArrayList<Road> connectedRoads = new ArrayList<>();
+    connectedRoads = graph.getOrDefault(chosenLocation, "This location was not found in the graph.");
+    return connectedRoads;
+  } // Returns all of the Roads connected to a specified Location in the Graph object.
+
+  public HashSet<Location> getNeighbors(Location chosenLocation) {
+    ArrayList<Road> connectedRoads = new ArrayList<>();
+    connectedRoads = getRoadsOfLocation(chosenLocation);
+    HashSet<Location> neighbors = new HashSet<>();
+    for (Road street : connectedRoads) {
+      
+    }
+  }
 }
