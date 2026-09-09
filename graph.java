@@ -54,7 +54,7 @@ public class Graph {
     connectedRoads = getRoadsOfLocation(chosenLocation);
     HashSet<Location> neighbors = new HashSet<>();
     for (Road street : connectedRoads) {
-      
+      Location neighbor = new Location(street.getLocation2());
     }
   }
 }
