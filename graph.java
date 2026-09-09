@@ -52,9 +52,16 @@ public class Graph {
   public HashSet<Location> getNeighbors(Location chosenLocation) {
     ArrayList<Road> connectedRoads = new ArrayList<>();
     connectedRoads = getRoadsOfLocation(chosenLocation);
+    
     HashSet<Location> neighbors = new HashSet<>();
+    
     for (Road street : connectedRoads) {
-      Location neighbor = new Location(street.getLocation2());
+      Location neighbor = new Location(street.getLocation2().toString());
+      if (!neighbors.contains(neighbor)) {
+        neighbors.add(neighbor);
+      }
     }
-  }
+    
+    return neighbors;
+  } // Returns the neighbors of a specified Location.
 }
