@@ -1,7 +1,7 @@
 public class Location {
   private String nameOfLocation;
   
-  Location(String nameOfLocation) {
+  public Location(String nameOfLocation) {
     this.nameOfLocation = nameOfLocation;
   }
 
