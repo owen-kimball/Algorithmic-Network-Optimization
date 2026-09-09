@@ -1,12 +1,12 @@
 public class Road {
-  Location location1;
-  Location location2;
-  double travelTime;
+  private Location location1;
+  private Location location2;
+  private double travelTime;
 
-  Road(Location firstLocation, Location secondLocation, double timeToTravel) {
-    location1 = firstLocation;
-    location2 = secondLocation;
-    travelTime = timeToTravel;
+  public Road(Location location1, Location location2, double travelTime) {
+    this.location1 = location1;
+    this.location2 = location2;
+    this.travelTime = travelTime;
   }
 
   public Location getLocation1() {
