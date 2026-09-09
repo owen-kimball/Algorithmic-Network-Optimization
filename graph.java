@@ -3,13 +3,19 @@ import java.util.Collections;
 import java.util.HashMap;
 
 public class Graph {
-  HashMap<Location, ArrayList<Road>> graph = new HashMap<>();
+  private HashMap<Location, ArrayList<Road>> graph = new HashMap<>();
+
+  public Graph(HashMap<Location, ArrayList<Road>> graph) {
+    this.graph = graph;
+  } // Constructor for a Graph object.
 
   public HashMap<Location, ArrayList<Road>> addLocation(Location locationName) {
-    ArrayList<Road> futureListOfRoads = new ArrayList<>();
-    graph.put(locationName, futureListOfRoads);
-    return graph;
-  }
+    if (!graph.containsKey(locationName)) {
+      ArrayList<Road> futureListOfRoads = new ArrayList<>();
+      graph.put(locationName, futureListOfRoads);
+      return graph;
+    }
+  } // Adds a location with a empty ArrayList of Roads to the Graph object.
 
   public HashMap<Location, ArrayList<Road>> addRoad(Location locationName1, Location locationName2, double travelTime) {
     ArrayList<Road> listOfRoads1 = new ArrayList<>();
