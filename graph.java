@@ -11,10 +11,7 @@ public class Graph {
     this.graph = graph;
   } // Constructor for a Graph object with a pre-built map.
 
-  public Graph() {
-    Hashmap<Location, ArrayList<Road>> graph = new HashMap<>();
-    this.graph = graph;
-  } // Constructor for a Graph object without a pre-built map.
+  public Graph() {} // Constructor for a Graph object without a pre-built map.
 
   public void addLocation(Location locationName) {
     if (!graph.containsKey(locationName)) {
