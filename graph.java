@@ -1,13 +1,19 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Graph {
   private HashMap<Location, ArrayList<Road>> graph = new HashMap<>();
 
   public Graph(HashMap<Location, ArrayList<Road>> graph) {
     this.graph = graph;
-  } // Constructor for a Graph object.
+  } // Constructor for a Graph object with a pre-built map.
+
+  public Graph() {
+    // Figure this out.
+  } // Constructor for a Graph object without a pre-built map.
 
   public void addLocation(Location locationName) {
     if (!graph.containsKey(locationName)) {
@@ -24,8 +30,8 @@ public class Graph {
       String location1Name = locationName1.toString();
       String location2Name = locationName2.toString();
       
-      listOfRoads1 = graph.get(location1Name);
-      listOfRoads2 = graph.get(location2Name);
+      listOfRoads1 = graph.get(locationName1);
+      listOfRoads2 = graph.get(locationName2);
       
       Road newRoad1 = new Road(locationName1, locationName2, travelTime);
       Road newRoad2 = new Road(locationName2, locationName1, travelTime);
@@ -38,18 +44,18 @@ public class Graph {
     }
   } // Note that this adds Roads for both Locations in their ArrayLists of Roads.
 
-  public HashSet<Location> getAllLocations() {
-    HashSet<Location> allLocations = new HashSet<>();
+  public Set<Location> getAllLocations() {
+    Set<Location> allLocations = new Set<>();
     allLocations = graph.keySet();
     return allLocations;
   } // Returns all of the Locations in the Graph object.
 
   public ArrayList<Road> getRoadsOfLocation(Location chosenLocation) {
+    ArrayList<Road> connectedRoads = new ArrayList<>();
     if (graph.containsKey(chosenLocation)) {
-      ArrayList<Road> connectedRoads = new ArrayList<>();
-      connectedRoads = graph.getOrDefault(chosenLocation, "This location was not found in the graph.");
-      return connectedRoads;
+      connectedRoads = graph.get(chosenLocation);
     }
+    return connectedRoads;
   } // Returns all of the Roads connected to a specified Location in the Graph object.
 
   public HashSet<Location> getNeighbors(Location chosenLocation) {
@@ -59,10 +65,8 @@ public class Graph {
       connectedRoads = getRoadsOfLocation(chosenLocation);
       
       for (Road street : connectedRoads) {
-        Location neighbor = new Location(street.getLocation2().toString());
-        if (!neighbors.contains(neighbor)) {
-          neighbors.add(neighbor);
-        }
+        Location neighbor = street.getLocation2();
+        neighbors.add(neighbor);
       }
     }
     return neighbors;
@@ -71,7 +75,7 @@ public class Graph {
   public boolean checkIfConnected(Location location1, Location location2) {
     if (graph.containsKey(location1)) {
       HashSet<Location> neighbors = new HashSet<>();
-      neighbors = graph.getNeighbors(location1);
+      neighbors = this.getNeighbors(location1);
       if (neighbors.contains(location2)) {
         return true;
       }
