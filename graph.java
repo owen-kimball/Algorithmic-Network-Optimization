@@ -27,9 +27,6 @@ public class Graph {
     if (graph.containsKey(locationName1) && graph.containsKey(locationName2)) {
       ArrayList<Road> listOfRoads1 = new ArrayList<>();
       ArrayList<Road> listOfRoads2 = new ArrayList<>();
-  
-      String location1Name = locationName1.toString();
-      String location2Name = locationName2.toString();
       
       listOfRoads1 = graph.get(locationName1);
       listOfRoads2 = graph.get(locationName2);
@@ -46,8 +43,7 @@ public class Graph {
   } // Note that this adds Roads for both Locations in their ArrayLists of Roads.
 
   public Set<Location> getAllLocations() {
-    Set<Location> allLocations = new Set<>();
-    allLocations = graph.keySet();
+    Set<Location> allLocations = graph.keySet();
     return allLocations;
   } // Returns all of the Locations in the Graph object.
 
